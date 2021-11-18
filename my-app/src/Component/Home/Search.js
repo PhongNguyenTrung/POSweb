@@ -71,7 +71,7 @@ function Search() {
               <Link className="product-name-link" to={`/product/${item.id}`}>
                 <h2 className="product-name">{item.name}</h2>
               </Link>
-              <p className="product-price">${item.price}</p>
+              <p className="product-price">{item.price}k VND</p>
             </div>
             <Link to={`/product/${item.id}`} className="view-details">
               View Details
