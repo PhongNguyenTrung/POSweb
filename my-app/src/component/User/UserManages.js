@@ -2,10 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { API_URL } from "../../const";
 import { ProductContext } from "../../Context/ProductContext";
 import swal from "sweetalert";
-
 function UserManages() {
   const { loading, setLoading } = useContext(ProductContext);
-
   const getAllUsers = () => {
     fetch(`${API_URL}/users?roleId=user`)
       .then((res) => res.json())
@@ -16,12 +14,10 @@ function UserManages() {
         }
       });
   };
-
   useEffect(() => {
     setLoading(true);
     getAllUsers();
   }, []);
-
   const deleteUser = (id) => {
     swal({
       title: "Bạn có chắc là xóa không",
@@ -37,7 +33,6 @@ function UserManages() {
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         };
-
         fetch(`${API_URL}/users/${id}`, option)
           .then((res) => res.json())
           .then((data) => {
@@ -54,9 +49,7 @@ function UserManages() {
       }
     });
   };
-
   const [users, setUsers] = useState([]);
-
   return (
     <>
       <div className="users">
@@ -74,14 +67,13 @@ function UserManages() {
                 src={
                   user.avatar
                     ? user.avatar
-                    : "https://pdp.edu.vn/wp-content/uploads/2021/05/hinh-anh-avatar-cho-con-gai-1.jpg"
+                    : "https://imgur.com/a/onRGnMS"
                 }
                 alt={user.username}
                 className="users-avatar"
               />
               <p className="users-email">{user.email}</p>
               <p className="users-role">{user.roleId}</p>
-
               <div className="review-action">
                 <div className="review-edit">
                   <i class="fas fa-pen"></i>
@@ -100,5 +92,4 @@ function UserManages() {
     </>
   );
 }
-
 export default UserManages;
