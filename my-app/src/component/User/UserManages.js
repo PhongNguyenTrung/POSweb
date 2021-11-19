@@ -74,7 +74,7 @@ function UserManages() {
                 src={
                   user.avatar
                     ? user.avatar
-                    : "https://pdp.edu.vn/wp-content/uploads/2021/05/hinh-anh-avatar-cho-con-gai-1.jpg"
+                    : "https://imgur.com/a/onRGnMS"
                 }
                 alt={user.username}
                 className="users-avatar"
