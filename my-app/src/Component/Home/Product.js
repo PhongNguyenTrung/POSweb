@@ -19,6 +19,7 @@ function Product() {
   const [drinks, setdrinks] = useState([]);
   const [checkDrinks, setCheckDrinks] = useState(false);
 
+  const [filter, setFilter] = useState('Lọc món ăn');
 
   const [page, setPage] = useState(1);
   // const [totalPage, setTotalPage] = useState();
@@ -29,6 +30,7 @@ function Product() {
     setCheckMD(false)
     setCheckDesserts(false)
     setCheckDrinks(false)
+    setFilter('Tất cả món ăn')
   };
 
   const filterMainDish = () => {
@@ -38,6 +40,7 @@ function Product() {
     setCheckDrinks(false)
     const mainD = products.filter(product => product.id <= 5)
     setMainDishes([...mainD])
+    setFilter('Món ăn chính')
   };
 
   const filterDessert = () => {
@@ -47,6 +50,7 @@ function Product() {
     setCheckDrinks(false)
     const de = products.filter(product => product.id > 5 && product.id <= 10)
     setDesserts([...de])
+    setFilter('Món ăn tráng miệng')
   };
 
   const filterDrink = () => {
@@ -56,6 +60,7 @@ function Product() {
     setCheckDrinks(true)
     const dr = products.filter(product => product.id > 10)
     setdrinks([...dr])
+    setFilter('Đồ uống')
   };
 
   useEffect(() => {
@@ -121,15 +126,14 @@ function Product() {
     
           <div  style={{width: "230px", marginBottom: "-5vh"}}>
             <Dropdown overlay={menu} placement="bottomCenter">
-              <Button size="large">Lọc món ăn <DownOutlined /></Button>
+              <Button size="large"> {filter} <DownOutlined /></Button>
             </Dropdown>
           </div>
 
           <div className="products">
             {products && checkAll &&
               products.map((item) => 
-                <ProductItem key={item.id} data={item} />
-                
+                <ProductItem key={item.id} data={item} />  
             )}
 
             {mainDishes && checkMD &&
