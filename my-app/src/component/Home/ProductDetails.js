@@ -39,7 +39,7 @@ function ProductDetails() {
 
   return (
     <div className="details">
-      <h2 className="details-title">Details Page</h2>
+      <h2 className="details-title">Chi tiết món ăn</h2>
       {loading ? (
         <LoadingDetails />
       ) : (
@@ -51,7 +51,7 @@ function ProductDetails() {
             <div className="details-infomation">
               <div>
                 <h3 className="details-name">{data.name}</h3>
-                <small>Product # {data.id}</small>
+                <small>Món ăn #{data.id}</small>
                 <h4 className="details-price">{data.price}k VND</h4>
               </div>
               <div className="add-product">

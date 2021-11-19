@@ -24,7 +24,7 @@ function UserManages() {
 
   const deleteUser = (id) => {
     swal({
-      title: "Bạn có chắc là xóa hok",
+      title: "Bạn có chắc là xóa không",
       icon: "warning",
       buttons: true,
       dangerMode: true,

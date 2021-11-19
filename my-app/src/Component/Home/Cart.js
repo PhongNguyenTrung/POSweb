@@ -96,7 +96,7 @@ function Cart() {
 
           swal({
             title: "Cảm ơn quý khách đã mua hàng",
-            text: "Chúng tui sẽ liên hệ với bạn sớm nhất",
+            text: "Chúng tôi sẽ liên hệ với bạn sớm nhất",
             icon: "success",
             buttons: "OK",
           });
