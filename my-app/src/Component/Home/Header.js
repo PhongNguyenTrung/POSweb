@@ -66,7 +66,7 @@ function Header() {
 
         <div className="header-info">
           <Link to="/cart" className="header-cart">
-            Cart
+            Giỏ hàng
             <span>{cart.length}</span>
           </Link>
 

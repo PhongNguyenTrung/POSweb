@@ -35,7 +35,6 @@ function Search() {
     });
 
     // từ bé đến lớn, tứ tự tăng dần
-
     setResult([...resultArray]);
   };
 
@@ -74,7 +73,7 @@ function Search() {
               <p className="product-price">{item.price}k VND</p>
             </div>
             <Link to={`/product/${item.id}`} className="view-details">
-              View Details
+              Xem chi tiết
             </Link>
           </>
         </div>

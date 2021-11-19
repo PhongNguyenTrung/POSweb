@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import swal from "sweetalert";
 import { AuthContext } from "../../Context/Auth";
 import { useHistory } from "react-router-dom";
-
+import { Input, Checkbox } from 'antd';
 function Cart() {
   const {
     ProductState: { cart },
@@ -96,7 +96,7 @@ function Cart() {
 
           swal({
             title: "Cảm ơn quý khách đã mua hàng",
-            text: "Chúng tui sẽ liên hệ với bạn sớm nhất",
+            text: "Chúng tôi sẽ liên hệ với bạn sớm nhất",
             icon: "success",
             buttons: "OK",
           });
@@ -137,7 +137,7 @@ function Cart() {
       ma_don_hang: random,
     });
   };
-
+  const { TextArea } = Input;
   return (
     <>
       {loading ? (
@@ -146,7 +146,7 @@ function Cart() {
         </div>
       ) : null}
       <div className="cart">
-        <h1 className="cart-title">Cart</h1>
+        <h1 className="cart-title">Giỏ hàng</h1>
         {cart.length > 0 ? (
           cart.map((item, index) => (
             <CartItem key={item.id} data={item} index={index} />
@@ -157,12 +157,28 @@ function Cart() {
           </div>
         )}
 
+        
+        <div className="additional">
+          <h1>Phương thức dùng bữa: {' '} 
+            <Checkbox style={{marginLeft: "3vw", marginRight: "1vw"}}/>
+            {' '} Ăn tại chỗ
+            <br />
+            <Checkbox style={{marginLeft: "21.5vw", marginRight: "1vw"}}/>
+            {' '} Mang đi
+          </h1>
+          <h1>Mã giảm giá: {'   '} 
+            <Input placeholder="Nhập mã giảm giá" style={{marginLeft: "3vw", width: "20vw"}} />
+          </h1>
+          <h1>Yêu cầu đi kèm: {'   '} 
+          <TextArea rows={4} placeholder="Nhập các yêu cầu đi kèm với món ăn"/>
+          </h1>
+        </div>
+
         <div className="pay">
           <h1>Tổng cộng: {tong_don_hang}k VND</h1>
-
           <div className="pay-to-win" onClick={payCart}>
             Thanh toán
-          </div>
+        </div>
         </div>
       </div>
 
