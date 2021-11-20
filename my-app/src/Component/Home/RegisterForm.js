@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import swal from "sweetalert";
-// import { AuthContext } from "../../Context/Auth";
 
 function RegisterForm() {
   const [data, setData] = useState({
@@ -10,11 +9,6 @@ function RegisterForm() {
     password: "",
     comfirmPassword: "",
   });
-
-  // const {
-  //   regsiterUser,
-  //   AuthState: { user },
-  // } = useContext(AuthContext);
 
   const handleOnChangeInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
