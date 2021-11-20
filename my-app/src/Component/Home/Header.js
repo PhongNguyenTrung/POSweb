@@ -5,7 +5,7 @@ import { ProductContext } from "../../Context/ProductContext";
 import { CLEAN_CART } from "../../const";
 import PropTypes from "prop-types"
 
-function Header(props) {
+function Header() {
   const {
     AuthState: { user },
     logOutUser,
