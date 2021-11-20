@@ -123,7 +123,7 @@ function Don_hang() {
     body = (
       <div className="not-view">
         <p>
-          Không có lịch sử <Link to="/">mua hàng ngay</Link>
+          Không có lịch sử <Link to="/">Mua hàng ngay</Link>
         </p>
       </div>
     );

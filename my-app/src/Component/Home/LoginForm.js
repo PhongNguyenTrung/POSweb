@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
-import { AuthContext } from "../../Context/Auth";
 
 function LoginForm() {
   const [data, setData] = useState({
@@ -14,41 +13,23 @@ function LoginForm() {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const {
-    LoginUsers,
-    AuthState: { user },
-  } = useContext(AuthContext);
-
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    if (!data.password || !data.email) {
-      return null;
-    } else {
-      await LoginUsers(data);
-    }
+    if (!alert("Đăng nhập thành công")) document.location = "/";
   };
-
   return (
     <>
-      {user ? (
-        <Redirect to="/" />
-      ) : (
-        <form className="form-custom" onSubmit={handleLogin}>
-          <div className="imgcontainer">
-            <img
-              src="https://pdp.edu.vn/wp-content/uploads/2021/05/hinh-anh-avatar-cho-con-gai-1.jpg"
-              alt="Avatar"
-              className="avatar"
-            />
-          </div>
-
+        <form className="form-custom" 
+        onSubmit={handleLogin}
+        >
+          <h1 style={{marginTop: "5vh", marginBottom: "1vh"}}> Đăng nhập </h1>
           <div className="container">
             <label htmlFor="uname">
               <b>Email</b>
             </label>
             <input
               type="email"
-              placeholder="Enter Email"
+              placeholder="Nhập email"
               name="email"
               required
               value={data.email}
@@ -57,11 +38,11 @@ function LoginForm() {
 
             <div className="password">
               <label htmlFor="psw">
-                <b>Password</b>
+                <b>Mật khẩu</b>
               </label>
               <input
                 type={showPass ? "text" : "password"}
-                placeholder="Enter Password"
+                placeholder="Nhập mật khẩu"
                 name="password"
                 required
                 value={data.password}
@@ -73,14 +54,13 @@ function LoginForm() {
               ></i>
             </div>
 
-            <button type="submit">Login</button>
+            <button type="submit">Đăng nhập</button>
 
             <span>
-              Nếu bạn chưa có tài khoản <Link to="/register">Đăng ký ngay</Link>
+              Nếu bạn chưa có tài khoản: <Link to="/register">Đăng ký ngay</Link>
             </span>
           </div>
         </form>
-      )}
     </>
   );
 }
