@@ -3,8 +3,9 @@ import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../Context/Auth";
 import { ProductContext } from "../../Context/ProductContext";
 import { CLEAN_CART } from "../../const";
+import PropTypes from "prop-types"
 
-function Header() {
+function Header(props) {
   const {
     AuthState: { user },
     logOutUser,
@@ -113,62 +114,97 @@ function Header() {
                   </Link>
                 </li>
               ) : null}
-
-              {user && user.username ? (
-                <>
-                  <li className="nav-mobile-item">
-                    <Link
-                      onClick={() => setShowMenu(false)}
-                      to="/about"
-                      className="nav-mobile-link"
-                    >
-                      {user.username}
-                    </Link>
-                  </li>
-                  <li className="nav-mobile-item">
-                    <Link
-                      onClick={() => setShowMenu(false)}
-                      to="/don_hang"
-                      className="nav-mobile-link"
-                    >
-                      Lịch sử mua hàng
-                    </Link>
-                  </li>
-                  <li className="nav-mobile-item">
-                    <span
-                      onClick={() => {
-                        logOut();
-                        setShowMenu(false);
-                      }}
-                      className="nav-mobile-link"
-                    >
-                      Đăng xuất
-                    </span>
-                  </li>
-                </>
-              ) : (
-                <li className="nav-mobile-item">
-                  <Link
-                    onClick={() => setShowMenu(false)}
-                    to="/login"
-                    className="nav-mobile-link"
-                  >
-                    Đăng nhập
-                  </Link>
-                </li>
-              )}
             </ul>
           </div>
 
           <div className="header-users">
-            {user ? (
+            {user ? ( 
               <>
                 <div className="header-avatar">
                   <img
                     src={
                       user.avatar
                         ? user.avatar
-                        : "https://i.imgur.com/AGe29dH.jpg"
+                        : 
+                        "https://i.imgur.com/z1RwHwe.jpg"
+                    }
+                    alt="avatar"
+                  />
+                  <span className="header-username">{user.username}</span>
+                </div>
+                <div className="header-user-dropdown">
+                  {user.roleId === "admin" ? (
+                    <Link to="/admin">Dashboard</Link>
+                  ) : null}
+                  <Link to="/about">Thông tin cá nhân</Link>
+                  <Link to="/don_hang">Lịch sử đặt món</Link>
+                  <div className="button-logout" onClick={logOut}>
+                    Đăng xuất
+                  </div>
+                </div>
+              </>
+            ) : ( 
+              <Link to="/login" className="login">
+                Đăng nhập
+              </Link>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+Header.propTypes = {
+  login: PropTypes.bool,
+}
+
+Header.defaultProps = {
+  login: true,
+}
+export default Header;
+{/* <div className="header-users">
+    {props.login ? (
+      <>
+        <div className="header-avatar">
+          <img
+            src={
+                "https://i.imgur.com/z1RwHwe.jpg"
+            }
+            alt="avatar"
+          />
+          // <span className="header-username">Người dùng</span> 
+        </div>
+        <div className="header-user-dropdown">
+          <Link to="/about">About</Link>
+          <Link to="/don_hang">Lịch sử mua hàng</Link>
+          <div className="button-logout" onClick={logOut}>
+            Log Out
+          </div>
+        </div>
+      </>
+    ) : ( 
+      <Link to="/login" className="login">
+        Login
+      </Link>
+    )}
+          </div> 
+*/}
+
+
+// sadasdasdashdk
+
+
+{/* <div className="header-users">
+            {user ? ( 
+              <>
+                <div className="header-avatar">
+                  <img
+                    src={
+                      // user.avatar
+                      //   ? user.avatar
+                      //   : 
+                        "https://i.imgur.com/z1RwHwe.jpg"
                     }
                     alt="avatar"
                   />
@@ -185,16 +221,9 @@ function Header() {
                   </div>
                 </div>
               </>
-            ) : (
+            ) : ( 
               <Link to="/login" className="login">
                 Login
               </Link>
             )}
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
-
-export default Header;
+          </div> */}

@@ -124,7 +124,7 @@ function Product() {
         <>
           <h1 className="product-title">Trang chủ</h1>
     
-          <div  style={{width: "230px", marginBottom: "-5vh"}}>
+          <div  style={{width: "210px", marginBottom: "-5vh"}}>
             <Dropdown overlay={menu} placement="bottomCenter">
               <Button size="large"> {filter} <DownOutlined /></Button>
             </Dropdown>

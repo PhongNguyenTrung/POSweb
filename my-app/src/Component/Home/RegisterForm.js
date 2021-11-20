@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import swal from "sweetalert";
-import { AuthContext } from "../../Context/Auth";
+// import { AuthContext } from "../../Context/Auth";
 
 function RegisterForm() {
   const [data, setData] = useState({
@@ -11,10 +11,10 @@ function RegisterForm() {
     comfirmPassword: "",
   });
 
-  const {
-    regsiterUser,
-    AuthState: { user },
-  } = useContext(AuthContext);
+  // const {
+  //   regsiterUser,
+  //   AuthState: { user },
+  // } = useContext(AuthContext);
 
   const handleOnChangeInput = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -29,24 +29,21 @@ function RegisterForm() {
         buttons: "OK",
       });
     } else {
-      regsiterUser(data);
+      if (!alert("Đăng ký thành công")) document.location = "/";
     }
   };
 
   return (
     <>
-      {user ? (
-        <Redirect to="/" />
-      ) : (
-        <form className="form-custom" onSubmit={handleRegister}>
-          <h1 className="title">Đăng ký thành viên mới</h1>
+        <form className="form-custom-reg" onSubmit={handleRegister}>
+          <h1 style={{marginTop: "2vh", marginBottom: "1vh"}}> Đăng ký thành viên mới</h1>
           <div className="container">
             <label htmlFor="uname">
-              <b>Username</b>
+              <b>Tên khách hàng</b>
             </label>
             <input
               type="username"
-              placeholder="Enter Username"
+              placeholder="Nhập tên của khách hàng"
               name="username"
               required
               value={data.username}
@@ -58,7 +55,7 @@ function RegisterForm() {
             </label>
             <input
               type="email"
-              placeholder="Enter Email"
+              placeholder="Nhập email"
               name="email"
               required
               value={data.email}
@@ -66,11 +63,11 @@ function RegisterForm() {
             />
 
             <label htmlFor="psw">
-              <b>Password</b>
+              <b>Mật khẩu</b>
             </label>
             <input
               type="password"
-              placeholder="Enter Password"
+              placeholder="Nhập mật khẩu"
               name="password"
               required
               value={data.password}
@@ -78,25 +75,25 @@ function RegisterForm() {
             />
 
             <label htmlFor="psw">
-              <b>Comfirm Password</b>
+              <b>Xác nhận lại mật khẩu</b>
             </label>
             <input
               type="password"
-              placeholder="Enter Comfirm Password"
+              placeholder="Nhập lại mật khẩu"
               name="comfirmPassword"
               required
               value={data.comfirmPassword}
               onChange={handleOnChangeInput}
             />
 
-            <button type="submit">Register</button>
+            <button type="submit">Đăng ký</button>
 
             <span>
               Nếu bạn đã có tài khoản <Link to="/login">Đăng nhập ngay</Link>{" "}
             </span>
           </div>
         </form>
-      )}
+      )
     </>
   );
 }

@@ -97,7 +97,7 @@ function About() {
                 src={
                   user.avatar
                     ? user.avatar
-                    : "https://pdp.edu.vn/wp-content/uploads/2021/05/hinh-anh-avatar-cho-con-gai-1.jpg"
+                    : "https://i.imgur.com/z1RwHwe.jpg"
                 }
                 alt="avatar"
               />
