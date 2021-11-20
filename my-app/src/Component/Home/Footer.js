@@ -31,7 +31,7 @@ function Footer() {
             <a>
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="https://github.com/suoncha/restaurantweb">
+            <a href="https://github.com/PhongNguyenTrung/POSweb">
               <i class="fab fa-github"></i>
             </a>
           </div>
