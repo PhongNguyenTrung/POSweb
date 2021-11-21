@@ -715,13 +715,14 @@ p.review-writer {
 
 .review-input {
   position: relative;
+  width: 400px;
 }
 
 input.review-submit {
   top: 0;
   width: 60px;
   position: absolute;
-  bottom: 0;
+  /* bottom: 0; */
   right: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;

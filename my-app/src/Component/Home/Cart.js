@@ -160,11 +160,13 @@ function Cart() {
         
         <div className="additional">
           <h1>Phương thức dùng bữa: {' '} 
-            <Checkbox style={{marginLeft: "3vw", marginRight: "1vw"}}/>
-            {' '} Ăn tại chỗ
+            <div className = "add-content" style={{marginLeft: "15vw", marginRight:"1vw"}}>
+            <Checkbox />
+            {'   '} Ăn tại chỗ
             <br />
-            <Checkbox style={{marginLeft: "21.5vw", marginRight: "1vw"}}/>
-            {' '} Mang đi
+            <Checkbox />
+            {'   '} Mang đi
+            </div>
           </h1>
           <h1>Mã giảm giá: {'   '} 
             <Input placeholder="Nhập mã giảm giá" style={{marginLeft: "3vw", width: "20vw"}} />
