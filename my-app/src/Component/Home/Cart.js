@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 import swal from "sweetalert";
 import { AuthContext } from "../../Context/Auth";
 import { useHistory } from "react-router-dom";
-import { Input, Checkbox } from 'antd';
+import { Input, Radio } from 'antd';
 function Cart() {
   const {
     ProductState: { cart },
@@ -21,15 +21,22 @@ function Cart() {
   const history = useHistory();
 
   const payCart = () => {
-    if (user) return setShowModal(true);
+    if (user) {
+      if (document.getElementById("Takeaway").checked)
+      return setShowModal(true);
+      setLoading(true);
+      return luu_don_hang();
+    }
 
-    swal({
-      title: "Bạn cần đăng nhập để mua hàng",
-      icon: "warning",
-      buttons: "OK",
-    });
+    else {
+      swal({
+        title: "Bạn cần đăng nhập để mua hàng",
+        icon: "warning",
+        buttons: "OK",
+      });
 
-    history.push("/login");
+      history.push("/login");
+    }
   };
 
   const { loading, setLoading } = useContext(ProductContext);
@@ -94,9 +101,17 @@ function Cart() {
 
           setLoading(false);
 
+          if (document.getElementById("Takeaway").checked)
           swal({
             title: "Cảm ơn quý khách đã mua hàng",
-            text: "Chúng tôi sẽ liên hệ với bạn sớm nhất",
+            text: "Chúng tôi sẽ giao hàng đến địa chỉ của bạn trong thời gian sớm nhất",
+            icon: "success",
+            buttons: "OK",
+          });
+          else 
+          swal({
+            title: "Cảm ơn quý khách đã mua hàng",
+            text: "Vui lòng thanh toán cho nhân viên tại quầy",
             icon: "success",
             buttons: "OK",
           });
@@ -137,7 +152,14 @@ function Cart() {
       ma_don_hang: random,
     });
   };
+
   const { TextArea } = Input;
+  // Chỉ chọn một
+  const [value, setValue] = React.useState(1);
+  const onChange = e => {
+    setValue(e.target.value);
+  };
+
   return (
     <>
       {loading ? (
@@ -160,13 +182,10 @@ function Cart() {
         
         <div className="additional">
           <h1>Phương thức dùng bữa: {' '} 
-            <div className = "add-content" style={{marginLeft: "15vw", marginRight:"1vw"}}>
-            <Checkbox />
-            {'   '} Ăn tại chỗ
-            <br />
-            <Checkbox />
-            {'   '} Mang đi
-            </div>
+          <Radio.Group onChange={onChange} value={value} name="Way">
+          <Radio value={1}>Ăn tại chỗ</Radio>
+          <Radio value={2} id="Takeaway">Mang đi</Radio>
+          </Radio.Group>
           </h1>
           <h1>Mã giảm giá: {'   '} 
             <Input placeholder="Nhập mã giảm giá" style={{marginLeft: "3vw", width: "20vw"}} />
@@ -250,5 +269,7 @@ function Cart() {
     </>
   );
 }
+
+
 
 export default Cart;
