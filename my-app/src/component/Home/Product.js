@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import Pagination from "./Pagination";
 import ProductItem from "./ProductItem";
 import { API_URL } from "../../const";
 import { ProductContext } from "../../Context/ProductContext";
@@ -67,7 +66,6 @@ function Product() {
     const getProductsPage = () => {
       fetch(`${API_URL}/products/?_page=${page}&_limit=50`)
         .then((res) => {
-          // setTotalPage(Math.ceil(res.headers.get("X-Total-Count") / 5));
           return res.json();
         })
         .then((products) => {
@@ -157,7 +155,6 @@ function Product() {
           </div>
         </>
       )}
-      {/* <Pagination totalPage={totalPage} page={page} setPage={setPage} /> */}
     </>
   );
 }
