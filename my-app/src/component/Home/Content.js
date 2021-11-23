@@ -10,7 +10,7 @@ import Search from "./Search";
 import Footer from "./Footer";
 import Don_hang from "../User/Don_hang";
 import Chi_Tiet_Don_Hang from "../User/ChiTietDonHang";
-
+import Card from "./Card";
 function Content() {
   const match = useRouteMatch();
 
@@ -25,6 +25,7 @@ function Content() {
         <Route path="/about" component={About} exact />
         <Route path="/search/:keyword" component={Search} exact />
         <Route path="/don_hang" component={Don_hang} exact />
+        <Route path="/card" component={Card} exact />
         <Route
           path="/don_hang/details/:ma_don_hang"
           component={Chi_Tiet_Don_Hang}

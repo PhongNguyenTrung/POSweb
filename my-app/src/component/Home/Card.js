@@ -41,7 +41,7 @@ function Cart() {
 
   const { loading, setLoading } = useContext(ProductContext);
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState();
 
   const random = uuidv4();
 
@@ -116,15 +116,13 @@ function Cart() {
                 icon: "success",
                 buttons: "OK",
               });
-            else if (document.getElementById("Card").checked){
+            else if (document.getElementById("Card").checked)
               swal({
                 title: "Cảm ơn quý khách đã mua hàng",
                 text: "Vui lòng thanh toán qua thẻ ngân hàng",
                 icon: "success",
                 buttons: "OK",
               });
-              history.push("/card");
-            }
             else
             swal({
               title: "Cảm ơn quý khách đã mua hàng",
@@ -197,49 +195,6 @@ function Cart() {
           <div className="line-loading"></div>
         </div>
       ) : null}
-      <div className="cart">
-        <h1 className="cart-title">Giỏ hàng</h1>
-        {cart.length > 0 ? (
-          cart.map((item, index) => (
-            <CartItem key={item.id} data={item} index={index} />
-          ))
-        ) : (
-          <div className="cart-no">
-            <h1>Không có sản phẩm nào</h1>
-          </div>
-        )}
-
-        
-        <div className="additional">
-          <h1>Phương thức dùng bữa: {' '} 
-          <Radio.Group name="PlaceMethod" onChange={onChange} value={value}>
-          <Radio value={1}>Ăn tại chỗ</Radio>
-          <Radio value={2} id="Takeaway">Mang đi</Radio>
-          </Radio.Group>
-          </h1>
-          <h1>Phương thức thanh toán: {' '} 
-          <Radio.Group name="PayMethod" id="PayMethod" onChange={onChange2} value={value2}>
-          <Radio value={"Cash"} id="Cash">Tiền mặt</Radio>
-          <Radio value={"Momo"} id="Momo">Momo</Radio>
-          <Radio value={"Card"} id="Card">Thẻ ngân hàng</Radio>
-          </Radio.Group>
-          </h1>
-          <h1>Mã giảm giá: {'   '} 
-            <Input placeholder="Nhập mã giảm giá" style={{marginLeft: "3vw", width: "20vw"}} />
-          </h1>
-          <h1>Yêu cầu đi kèm: {'   '} 
-          <TextArea rows={4} placeholder="Nhập các yêu cầu đi kèm với món ăn"/>
-          </h1>
-        </div>
-
-        <div className="pay">
-          <h1>Tổng cộng: {tong_don_hang}k VND</h1>
-          <div className="pay-to-win" onClick={payCart}>
-            Thanh toán
-        </div>
-        </div>
-      </div>
-
       <form
         onSubmit={handleOnSubmit}
         style={{ display: showModal ? "flex" : "none" }}
@@ -306,7 +261,5 @@ function Cart() {
     </>
   );
 }
-
-
 
 export default Cart;
